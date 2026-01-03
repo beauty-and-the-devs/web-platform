@@ -163,8 +163,8 @@ export default function ProductAtelierPage() {
     <div className="min-h-screen bg-background-paper">
       <Sidebar />
       <Header />
-      <main className="ml-[280px] mt-16">
-        <div className="w-[1111px] mx-auto py-5 px-10">
+      <main className="ml-[280px] pt-16 min-h-screen">
+        <div className="max-w-[1200px] w-full p-8">
           {/* Page Header */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex flex-col gap-1">
@@ -248,9 +248,9 @@ export default function ProductAtelierPage() {
             </div>
           </div>
 
-          <div className="flex gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Left Column - Product Image & Variants */}
-            <div className="w-[539.5px] flex flex-col gap-6">
+            <div className="flex flex-col gap-6">
               <ProductImageDisplay
                 imageUrl={productData.imageUrl}
                 productName={productData.name}
@@ -269,7 +269,7 @@ export default function ProductAtelierPage() {
             </div>
 
             {/* Right Column - Product Info & Details */}
-            <div className="w-[539.5px] flex flex-col gap-6">
+            <div className="flex flex-col gap-6">
               <ProductInformationCard
                 name={productData.name}
                 description={productData.description}

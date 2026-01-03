@@ -11,7 +11,7 @@ export default function InfluencersCard() {
   };
 
   return (
-    <div 
+    <div
       className="bg-white rounded-[10px] border border-secondary-dark/20 flex flex-col w-full"
       style={{
         padding: '33px 33px 1px',
@@ -20,7 +20,7 @@ export default function InfluencersCard() {
       }}
     >
       <div>
-        <h3 
+        <h3
           className="text-primary-main font-medium"
           style={{
             fontSize: '18px',
@@ -37,15 +37,11 @@ export default function InfluencersCard() {
 
       <div className="w-full">
         {/* Main Influencer Card */}
-        <div 
-          className="bg-secondary-main border border-secondary-dark/20 rounded-[10px] p-5 flex flex-col items-center"
-          style={{
-            width: '249.25px',
-            minHeight: '440px'
-          }}
+        <div
+          className="bg-secondary-main border border-secondary-dark/20 rounded-[10px] p-5 flex flex-col items-center max-w-[280px]"
         >
           {/* Profile Image */}
-          <div 
+          <div
             className="rounded-full mb-4"
             style={{
               width: '80px',
@@ -55,7 +51,7 @@ export default function InfluencersCard() {
           />
 
           {/* Username */}
-          <h4 
+          <h4
             className="text-black font-medium text-center mb-2"
             style={{
               fontSize: '16px',
@@ -70,10 +66,10 @@ export default function InfluencersCard() {
           {/* Followers */}
           <div className="flex items-center justify-center gap-2 mb-2">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ color: '#7D7D7D' }}>
-              <path d="M1.17 4.08L5.83 4.08M9.17 4.08L11.67 4.08M9.17 4.08L5.83 4.08M5.83 4.08L1.17 4.08" stroke="currentColor" strokeWidth="1.17" strokeLinecap="round"/>
-              <path d="M9.17 4.08L11.67 4.08M11.67 4.08L11.67 7.58M11.67 7.58L9.17 7.58" stroke="currentColor" strokeWidth="1.17" strokeLinecap="round"/>
+              <path d="M1.17 4.08L5.83 4.08M9.17 4.08L11.67 4.08M9.17 4.08L5.83 4.08M5.83 4.08L1.17 4.08" stroke="currentColor" strokeWidth="1.17" strokeLinecap="round" />
+              <path d="M9.17 4.08L11.67 4.08M11.67 4.08L11.67 7.58M11.67 7.58L9.17 7.58" stroke="currentColor" strokeWidth="1.17" strokeLinecap="round" />
             </svg>
-            <span 
+            <span
               className="text-secondary-dark text-center"
               style={{
                 fontSize: '14px',
@@ -87,7 +83,7 @@ export default function InfluencersCard() {
           </div>
 
           {/* Category Badge */}
-          <div 
+          <div
             className="flex items-center justify-center mb-6"
             style={{
               padding: '2px 8px',
@@ -95,7 +91,7 @@ export default function InfluencersCard() {
               borderRadius: '10px'
             }}
           >
-            <span 
+            <span
               className="text-primary-light text-center"
               style={{
                 fontSize: '12px',
@@ -111,13 +107,13 @@ export default function InfluencersCard() {
           {/* Metrics */}
           <div className="w-full space-y-3">
             {/* Avg Views */}
-            <div 
+            <div
               className="bg-white rounded-[10px] flex items-center justify-between px-2"
               style={{
                 height: '36px'
               }}
             >
-              <span 
+              <span
                 className="text-secondary-dark"
                 style={{
                   fontSize: '12px',
@@ -128,7 +124,7 @@ export default function InfluencersCard() {
               >
                 Avg. Views
               </span>
-              <span 
+              <span
                 className="text-black font-medium"
                 style={{
                   fontSize: '14px',
@@ -144,7 +140,7 @@ export default function InfluencersCard() {
             {/* Engagement */}
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center justify-between">
-                <span 
+                <span
                   className="text-secondary-dark"
                   style={{
                     fontSize: '12px',
@@ -155,7 +151,7 @@ export default function InfluencersCard() {
                 >
                   Engagement
                 </span>
-                <span 
+                <span
                   className="text-primary-light font-medium"
                   style={{
                     fontSize: '12px',
@@ -167,7 +163,7 @@ export default function InfluencersCard() {
                   {influencer.engagement}
                 </span>
               </div>
-              <div 
+              <div
                 className="bg-white rounded-[10px] overflow-hidden"
                 style={{
                   width: '100%',
@@ -176,7 +172,7 @@ export default function InfluencersCard() {
               >
                 <div
                   className="bg-primary-light rounded-[10px] h-full"
-                  style={{ 
+                  style={{
                     width: influencer.engagementWidth
                   }}
                 />

@@ -16,8 +16,8 @@ export default function InsightPage() {
     <div className="min-h-screen" style={{ background: "#F5F5F5" }}>
       <Sidebar />
       <Header />
-      <main className="ml-[280px] mt-16">
-        <div className="w-[1111px] py-8 space-y-6">
+      <main className="ml-[280px] pt-16 min-h-screen">
+        <div className="max-w-[1200px] w-full p-8 space-y-6">
           {/* File Upload Card */}
           <FileUploadCard />
 
@@ -36,7 +36,7 @@ export default function InsightPage() {
           </div>
 
           {/* Opportunity Matrix and TikTok Trends */}
-          <div className="grid grid-cols-1 lg:grid-cols-[638px_449px] gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6">
             <OpportunityMatrixCard />
             <TikTokTrendsCard />
           </div>

@@ -2,14 +2,14 @@
 
 export default function TrendSignalCard() {
   return (
-    <div 
+    <div
       className="bg-white rounded-[10px] border border-secondary-dark/20 relative overflow-hidden w-full"
       style={{
         minHeight: '466px'
       }}
     >
       {/* Background Blur Effect */}
-      <div 
+      <div
         className="absolute rounded-full"
         style={{
           left: '475.66px',
@@ -26,7 +26,7 @@ export default function TrendSignalCard() {
         {/* Header */}
         <div className="flex items-start justify-between mb-7">
           <div className="flex flex-col gap-1">
-            <h2 
+            <h2
               className="text-primary-main font-semibold"
               style={{
                 fontSize: '36px',
@@ -37,7 +37,7 @@ export default function TrendSignalCard() {
             >
               Glass Skin
             </h2>
-            <p 
+            <p
               className="text-secondary-dark"
               style={{
                 fontSize: '14px',
@@ -49,20 +49,14 @@ export default function TrendSignalCard() {
               #CleanGirlAesthetic · #NaturalGlow
             </p>
           </div>
-          <div 
-            className="flex items-center gap-2 bg-primary-light/10 border border-primary-light/20 rounded-[10px]"
-            style={{
-              padding: '0px 16px',
-              gap: '8px',
-              width: '118.02px',
-              height: '42px'
-            }}
+          <div
+            className="flex items-center gap-2 bg-primary-light/10 border border-primary-light/20 rounded-[10px] px-4 h-10"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ color: '#1F5795' }}>
-              <path d="M1.67 5.83L8.33 5.83M13.33 5.83L16.67 5.83M13.33 5.83L8.33 5.83M8.33 5.83L1.67 5.83" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round"/>
-              <path d="M13.33 5.83L16.67 5.83M16.67 5.83L16.67 10.83M16.67 10.83L13.33 10.83" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round"/>
+              <path d="M1.67 5.83L8.33 5.83M13.33 5.83L16.67 5.83M13.33 5.83L8.33 5.83M8.33 5.83L1.67 5.83" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" />
+              <path d="M13.33 5.83L16.67 5.83M16.67 5.83L16.67 10.83M16.67 10.83L13.33 10.83" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" />
             </svg>
-            <span 
+            <span
               className="text-primary-light font-medium"
               style={{
                 fontSize: '16px',
@@ -79,7 +73,7 @@ export default function TrendSignalCard() {
         {/* Metrics Grid */}
         <div className="grid grid-cols-4 gap-9 mb-8">
           <div className="flex flex-col gap-1">
-            <p 
+            <p
               className="text-secondary-dark"
               style={{
                 fontSize: '14px',
@@ -90,7 +84,7 @@ export default function TrendSignalCard() {
             >
               멘션률?
             </p>
-            <p 
+            <p
               className="text-black font-medium"
               style={{
                 fontSize: '24px',
@@ -101,7 +95,7 @@ export default function TrendSignalCard() {
             >
               124.8M
             </p>
-            <p 
+            <p
               className="text-primary-light"
               style={{
                 fontSize: '12px',
@@ -114,7 +108,7 @@ export default function TrendSignalCard() {
             </p>
           </div>
           <div className="flex flex-col gap-1">
-            <p 
+            <p
               className="text-secondary-dark"
               style={{
                 fontSize: '14px',
@@ -125,7 +119,7 @@ export default function TrendSignalCard() {
             >
               Total GMV
             </p>
-            <p 
+            <p
               className="text-black font-medium"
               style={{
                 fontSize: '24px',
@@ -136,7 +130,7 @@ export default function TrendSignalCard() {
             >
               $4.2M
             </p>
-            <p 
+            <p
               className="text-primary-light"
               style={{
                 fontSize: '12px',
@@ -149,7 +143,7 @@ export default function TrendSignalCard() {
             </p>
           </div>
           <div className="flex flex-col gap-1">
-            <p 
+            <p
               className="text-secondary-dark"
               style={{
                 fontSize: '14px',
@@ -160,7 +154,7 @@ export default function TrendSignalCard() {
             >
               Avg. Sale Price
             </p>
-            <p 
+            <p
               className="text-black font-medium"
               style={{
                 fontSize: '24px',
@@ -171,7 +165,7 @@ export default function TrendSignalCard() {
             >
               $28.50
             </p>
-            <p 
+            <p
               className="text-accent-success"
               style={{
                 fontSize: '12px',
@@ -184,7 +178,7 @@ export default function TrendSignalCard() {
             </p>
           </div>
           <div className="flex flex-col gap-1">
-            <p 
+            <p
               className="text-secondary-dark"
               style={{
                 fontSize: '14px',
@@ -195,7 +189,7 @@ export default function TrendSignalCard() {
             >
               Avg. Conversion Rate
             </p>
-            <p 
+            <p
               className="text-black font-medium"
               style={{
                 fontSize: '24px',
@@ -206,7 +200,7 @@ export default function TrendSignalCard() {
             >
               12.4%
             </p>
-            <p 
+            <p
               className="text-primary-light"
               style={{
                 fontSize: '12px',
@@ -221,7 +215,7 @@ export default function TrendSignalCard() {
         </div>
 
         {/* Surface Chart Placeholder */}
-        <div 
+        <div
           className="bg-secondary-main rounded-md mb-6 flex items-center justify-center"
           style={{
             width: '100%',
@@ -237,17 +231,7 @@ export default function TrendSignalCard() {
             (keyword, index) => (
               <span
                 key={index}
-                className="bg-secondary-main border border-secondary-dark/20 rounded-[10px] text-secondary-dark flex items-center justify-center"
-                style={{
-                  padding: '8px',
-                  gap: '10px',
-                  width: '77px',
-                  height: '32px',
-                  fontSize: '12px',
-                  lineHeight: '16px',
-                  letterSpacing: '-0.16px',
-                  fontWeight: 500
-                }}
+                className="bg-secondary-main border border-secondary-dark/20 rounded-[10px] text-secondary-dark px-2 py-1 text-xs"
               >
                 {keyword}
               </span>

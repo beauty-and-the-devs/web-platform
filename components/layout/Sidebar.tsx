@@ -15,7 +15,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-[240px] bg-primary-main flex flex-col">
+    <aside className="fixed left-0 top-0 h-screen w-[280px] bg-primary-main flex flex-col">
       {/* Logo */}
       <div className="h-20 flex items-center px-6 border-b border-white/10">
         <h1 className="text-xl font-medium text-white">AMOREPACIFIC</h1>

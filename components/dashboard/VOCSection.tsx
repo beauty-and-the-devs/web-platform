@@ -34,27 +34,18 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
   const [isExpanded, setIsExpanded] = useState(product.name === "e.l.f. Halo Glow Liquid Filter");
 
   return (
-    <div 
-      className="border border-secondary-dark/20 rounded-[10px] overflow-hidden"
-      style={{
-        width: '1045px',
-        minHeight: '145px'
-      }}
+    <div
+      className="border border-secondary-dark/20 rounded-[10px] overflow-hidden w-full"
     >
       {/* Header */}
-      <div 
-        className="bg-secondary-main cursor-pointer"
-        style={{
-          width: '1043px',
-          height: '145px',
-          padding: '16px'
-        }}
+      <div
+        className="bg-secondary-main cursor-pointer p-4"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        <div className="flex items-start justify-between" style={{ width: '1011px', height: '48px' }}>
-          <div className="flex flex-col gap-2" style={{ width: '991px', height: '48px' }}>
-            <div className="flex items-center gap-2" style={{ width: '991px', height: '24px' }}>
-              <h4 
+        <div className="flex items-start justify-between">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h4
                 className="text-black font-medium"
                 style={{
                   fontSize: '16px',
@@ -66,7 +57,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
               >
                 {product.name}
               </h4>
-              <span 
+              <span
                 className="flex items-center justify-center text-white font-semibold"
                 style={{
                   width: '80.36px',
@@ -84,7 +75,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
               </span>
             </div>
             <div className="flex items-center gap-4" style={{ width: '991px', height: '16px' }}>
-              <span 
+              <span
                 className="text-secondary-dark"
                 style={{
                   fontSize: '12px',
@@ -96,7 +87,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
               >
                 판매: {product.sales}
               </span>
-              <span 
+              <span
                 className="text-secondary-dark"
                 style={{
                   fontSize: '12px',
@@ -108,7 +99,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
               >
                 매출: {product.revenue}
               </span>
-              <span 
+              <span
                 className="text-secondary-dark"
                 style={{
                   fontSize: '12px',
@@ -120,34 +111,28 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
               >
                 반품률: {product.returnRate}
               </span>
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 20 20" 
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
                 fill="none"
                 style={{
                   transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
                   transition: 'transform 0.2s'
                 }}
               >
-                <path d="M5 7.5L10 12.5L15 7.5" stroke="#7D7D7D" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="#7D7D7D" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
           </div>
         </div>
 
         {/* Strength and Improvement */}
-        <div className="flex gap-2 mt-4" style={{ width: '1011px', height: '53px' }}>
-          <div 
-            className="bg-white border border-accent-success/20 rounded-[10px] flex flex-col"
-            style={{
-              width: '501.5px',
-              height: '53px',
-              padding: '9px',
-              gap: '4px'
-            }}
+        <div className="grid grid-cols-2 gap-2 mt-4">
+          <div
+            className="bg-white border border-accent-success/20 rounded-[10px] flex flex-col p-2 gap-1"
           >
-            <p 
+            <p
               className="text-secondary-dark"
               style={{
                 fontSize: '10px',
@@ -159,7 +144,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
             >
               {product.strength.label}
             </p>
-            <p 
+            <p
               className="text-accent-success font-medium"
               style={{
                 fontSize: '12px',
@@ -172,16 +157,10 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
               {product.strength.text}
             </p>
           </div>
-          <div 
-            className="bg-white border border-accent-error/20 rounded-[10px] flex flex-col"
-            style={{
-              width: '501.5px',
-              height: '53px',
-              padding: '9px',
-              gap: '4px'
-            }}
+          <div
+            className="bg-white border border-accent-error/20 rounded-[10px] flex flex-col p-2 gap-1"
           >
-            <p 
+            <p
               className="text-secondary-dark"
               style={{
                 fontSize: '10px',
@@ -193,7 +172,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
             >
               {product.improvement.label}
             </p>
-            <p 
+            <p
               className="text-accent-error font-medium"
               style={{
                 fontSize: '12px',
@@ -211,15 +190,10 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
 
       {/* Expanded Content */}
       {isExpanded && product.improvementOptions.length > 0 && (
-        <div 
-          className="bg-white border-t border-secondary-dark/20"
-          style={{
-            width: '1043px',
-            padding: '17px 16px 0px',
-            gap: '12px'
-          }}
+        <div
+          className="bg-white border-t border-secondary-dark/20 p-4"
         >
-          <h5 
+          <h5
             className="text-primary-main font-medium mb-4"
             style={{
               fontSize: '14px',
@@ -246,7 +220,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
               >
                 {/* Option Header */}
                 <div className="flex items-start gap-3 mb-3" style={{ width: '977px', height: '48px' }}>
-                  <div 
+                  <div
                     className="bg-primary-light rounded-[10px] flex items-center justify-center text-white font-bold flex-shrink-0"
                     style={{
                       width: '32px',
@@ -260,7 +234,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                     {option.id}
                   </div>
                   <div className="flex flex-col gap-1 flex-1">
-                    <h6 
+                    <h6
                       className="text-black font-medium"
                       style={{
                         fontSize: '16px',
@@ -272,7 +246,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                     >
                       {option.title}
                     </h6>
-                    <p 
+                    <p
                       className="text-secondary-dark"
                       style={{
                         fontSize: '14px',
@@ -289,7 +263,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
 
                 {/* Expected Effect and Implementation Period */}
                 <div className="flex gap-2 mb-3" style={{ width: '977px', height: '51px' }}>
-                  <div 
+                  <div
                     className="bg-white rounded flex flex-col"
                     style={{
                       width: '484.5px',
@@ -298,7 +272,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                       gap: '4px'
                     }}
                   >
-                    <p 
+                    <p
                       className="text-secondary-dark"
                       style={{
                         fontSize: '10px',
@@ -310,7 +284,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                     >
                       예상 효과
                     </p>
-                    <p 
+                    <p
                       className="text-accent-success font-semibold"
                       style={{
                         fontSize: '12px',
@@ -323,7 +297,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                       {option.expectedEffect}
                     </p>
                   </div>
-                  <div 
+                  <div
                     className="bg-white rounded flex flex-col"
                     style={{
                       width: '484.5px',
@@ -332,7 +306,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                       gap: '4px'
                     }}
                   >
-                    <p 
+                    <p
                       className="text-secondary-dark"
                       style={{
                         fontSize: '10px',
@@ -344,7 +318,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                     >
                       구현 기간
                     </p>
-                    <p 
+                    <p
                       className="text-primary-light font-semibold"
                       style={{
                         fontSize: '12px',
@@ -360,14 +334,14 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                 </div>
 
                 {/* Category and Recommended */}
-                <div 
+                <div
                   className="flex items-center justify-between border-t border-secondary-dark/10 pt-2"
                   style={{
                     width: '977px',
                     height: '33px'
                   }}
                 >
-                  <span 
+                  <span
                     className="text-secondary-dark"
                     style={{
                       fontSize: '12px',
@@ -380,7 +354,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                     {option.category}
                   </span>
                   {option.recommended && (
-                    <span 
+                    <span
                       className="bg-accent-success/10 text-accent-success flex items-center justify-center font-medium"
                       style={{
                         width: '36.45px',
@@ -404,7 +378,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
 
           {/* Basis Data */}
           {product.basisData && (
-            <div 
+            <div
               className="bg-yellow-50 border border-yellow-200 rounded-[10px] mt-4"
               style={{
                 width: '1011px',
@@ -415,7 +389,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
                 border: '1px solid #FDE68A'
               }}
             >
-              <p 
+              <p
                 className="text-orange-600 font-medium mb-1"
                 style={{
                   fontSize: '12px',
@@ -428,7 +402,7 @@ function ProductOpportunityCard({ product }: { product: ProductOpportunity }) {
               >
                 📊 근거 데이터
               </p>
-              <p 
+              <p
                 className="text-black"
                 style={{
                   fontSize: '12px',
@@ -611,12 +585,8 @@ export default function VOCSection() {
   ];
 
   return (
-    <div 
+    <div
       className="bg-white rounded-[10px] border border-secondary-dark/20 w-full"
-      style={{
-        width: '1111px',
-        minHeight: activeTab === "opportunity" ? '1395px' : '678px'
-      }}
     >
       {/* Tabs */}
       <div className="flex border-b border-secondary-dark/20 relative">
@@ -634,41 +604,41 @@ export default function VOCSection() {
               width: '369.66px',
               height: '52px',
               padding: '16px 24px 0px',
-              background: activeTab === tab.id 
+              background: activeTab === tab.id
                 ? (tab.id === "negative" ? 'rgba(220, 38, 38, 0.05)' : tab.id === "opportunity" ? 'rgba(16, 185, 129, 0.05)' : 'rgba(255, 255, 255, 0.05)')
                 : 'transparent',
-              borderBottom: activeTab === tab.id && tab.id === "negative" 
-                ? '2px solid #DC2626' 
+              borderBottom: activeTab === tab.id && tab.id === "negative"
+                ? '2px solid #DC2626'
                 : activeTab === tab.id && tab.id === "opportunity"
-                ? '2px solid #10B981'
-                : activeTab === tab.id && tab.id === "positive"
-                ? '2px solid #1F5795'
-                : 'none'
+                  ? '2px solid #10B981'
+                  : activeTab === tab.id && tab.id === "positive"
+                    ? '2px solid #1F5795'
+                    : 'none'
             }}
           >
             <div className="flex items-center gap-2">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 {tab.id === "positive" && (
                   <>
-                    <path d="M4.67 6.67L8 10L11.33 6.67" stroke={activeTab === tab.id ? "#1F5795" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M4.67 2.67L8 6L11.33 2.67" stroke={activeTab === tab.id ? "#1F5795" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4.67 6.67L8 10L11.33 6.67" stroke={activeTab === tab.id ? "#1F5795" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M4.67 2.67L8 6L11.33 2.67" stroke={activeTab === tab.id ? "#1F5795" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
                   </>
                 )}
                 {tab.id === "negative" && (
                   <>
-                    <path d="M11.33 9.33L8 6L4.67 9.33" stroke={activeTab === tab.id ? "#DC2626" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M11.33 13.33L8 10L4.67 13.33" stroke={activeTab === tab.id ? "#DC2626" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M11.33 9.33L8 6L4.67 9.33" stroke={activeTab === tab.id ? "#DC2626" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M11.33 13.33L8 10L4.67 13.33" stroke={activeTab === tab.id ? "#DC2626" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
                   </>
                 )}
                 {tab.id === "opportunity" && (
                   <>
-                    <path d="M4 4L8 8L12 4" stroke={activeTab === tab.id ? "#10B981" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M6 12L8 14L10 12" stroke={activeTab === tab.id ? "#10B981" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M7.33 15.33L8 16L8.67 15.33" stroke={activeTab === tab.id ? "#10B981" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 4L8 8L12 4" stroke={activeTab === tab.id ? "#10B981" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M6 12L8 14L10 12" stroke={activeTab === tab.id ? "#10B981" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M7.33 15.33L8 16L8.67 15.33" stroke={activeTab === tab.id ? "#10B981" : "#7D7D7D"} strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
                   </>
                 )}
               </svg>
-              <span 
+              <span
                 className="text-sm font-semibold text-center"
                 style={{
                   fontSize: '14px',
@@ -725,13 +695,13 @@ export default function VOCSection() {
         {activeTab === "negative" && (
           <div className="flex flex-col gap-4" style={{ width: '1045px' }}>
             {negativeDrivers.map((driver, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="flex items-start"
                 style={{ width: '934px', height: '176px', gap: '32px' }}
               >
                 {/* Left: Data Card */}
-                <div 
+                <div
                   className="bg-secondary-main border border-secondary-dark/20 rounded-[10px] flex flex-col"
                   style={{
                     width: '480px',
@@ -744,7 +714,7 @@ export default function VOCSection() {
                   <div className="flex items-start justify-between" style={{ width: '448px', height: '48px' }}>
                     <div className="flex flex-col gap-1" style={{ width: '394.7px', height: '48px' }}>
                       <div className="flex items-center gap-2" style={{ width: '394.7px', height: '24px' }}>
-                        <h4 
+                        <h4
                           className="text-black font-semibold"
                           style={{
                             fontSize: '18px',
@@ -755,7 +725,7 @@ export default function VOCSection() {
                         >
                           {driver.title}
                         </h4>
-                        <span 
+                        <span
                           className="flex items-center justify-center"
                           style={{
                             padding: '4px 8px',
@@ -766,7 +736,7 @@ export default function VOCSection() {
                             borderRadius: '4px'
                           }}
                         >
-                          <span 
+                          <span
                             style={{
                               fontSize: '12px',
                               lineHeight: '16px',
@@ -778,7 +748,7 @@ export default function VOCSection() {
                           </span>
                         </span>
                       </div>
-                      <p 
+                      <p
                         className="text-secondary-dark"
                         style={{
                           fontSize: '14px',
@@ -791,7 +761,7 @@ export default function VOCSection() {
                     </div>
                     {/* Percentage */}
                     <div className="flex flex-col" style={{ width: '53.3px', height: '48px' }}>
-                      <p 
+                      <p
                         className="text-right font-bold"
                         style={{
                           fontSize: '24px',
@@ -806,7 +776,7 @@ export default function VOCSection() {
                       >
                         {driver.negativeRate}
                       </p>
-                      <p 
+                      <p
                         className="text-right text-secondary-dark"
                         style={{
                           fontSize: '12px',
@@ -834,7 +804,7 @@ export default function VOCSection() {
                           gap: '4px'
                         }}
                       >
-                        <p 
+                        <p
                           className="text-black italic"
                           style={{
                             fontSize: '12px',
@@ -853,7 +823,7 @@ export default function VOCSection() {
                   </div>
                 </div>
                 {/* Right: Image Placeholders */}
-                <div 
+                <div
                   className="flex"
                   style={{ width: '422px', height: '176px', gap: '16px' }}
                 >
@@ -893,7 +863,7 @@ export default function VOCSection() {
         {activeTab === "opportunity" && (
           <div className="flex flex-col gap-4" style={{ width: '1045px' }}>
             {/* Info Box */}
-            <div 
+            <div
               className="bg-yellow-50 border border-yellow-200 rounded-[10px] relative"
               style={{
                 width: '1045px',
@@ -902,10 +872,10 @@ export default function VOCSection() {
                 border: '1px solid #FDE68A'
               }}
             >
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 20 20" 
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
                 fill="none"
                 style={{
                   position: 'absolute',
@@ -913,9 +883,9 @@ export default function VOCSection() {
                   top: '19px'
                 }}
               >
-                <path d="M10 2.5L15 7.5L10 12.5L5 7.5L10 2.5Z" stroke="#F59E0B" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M10 2.5L15 7.5L10 12.5L5 7.5L10 2.5Z" stroke="#F59E0B" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <div 
+              <div
                 className="flex flex-col gap-1"
                 style={{
                   width: '377.17px',
@@ -925,7 +895,7 @@ export default function VOCSection() {
                   position: 'absolute'
                 }}
               >
-                <h4 
+                <h4
                   className="text-black font-medium"
                   style={{
                     fontSize: '16px',
@@ -939,7 +909,7 @@ export default function VOCSection() {
                 >
                   제품 기회 분석: 판매량 높음 + 특정 불만 존재
                 </h4>
-                <p 
+                <p
                   className="text-secondary-dark"
                   style={{
                     fontSize: '14px',

@@ -1,9 +1,9 @@
 "use client";
 
-import { GenerationReport } from "@/types/video";
+import type { GenerationReport as GenerationReportType } from "@/types/video";
 
 interface GenerationReportProps {
-  report: GenerationReport;
+  report: GenerationReportType;
 }
 
 export default function GenerationReport({ report }: GenerationReportProps) {

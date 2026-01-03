@@ -128,8 +128,8 @@ export default function CreativeStudioPage() {
     <div className="min-h-screen bg-background-paper">
       <Sidebar />
       <Header />
-      <main className="ml-[280px] mt-16">
-        <div className="w-[1111px] py-8 px-10">
+      <main className="ml-[280px] pt-16 min-h-screen">
+        <div className="max-w-[1200px] w-full p-8">
           {/* Header */}
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-1">
