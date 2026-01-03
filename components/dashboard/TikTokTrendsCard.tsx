@@ -29,36 +29,102 @@ export default function TikTokTrendsCard() {
   ];
 
   return (
-    <div className="bg-white rounded-[10px] border border-secondary-dark/20 w-full">
-      <div className="p-8 pb-1">
-        <div className="mb-6">
-          <h3 className="text-lg font-medium text-primary-main mb-1 leading-[1.5] tracking-[-0.02em]">
-            TikTok Shop Key Trends
-          </h3>
-          <p className="text-sm text-secondary-dark leading-[1.43] tracking-[-0.011em]">
-            US Makeup Market Core Insights
-          </p>
-        </div>
+    <div 
+      className="bg-white rounded-[10px] border border-secondary-dark/20 flex flex-col w-full"
+      style={{
+        padding: '33px 33px 1px',
+        gap: '24px',
+        minHeight: '885px'
+      }}
+    >
+      <div className="flex flex-col gap-1">
+        <h3 
+          className="text-primary-main font-medium"
+          style={{
+            fontSize: '18px',
+            lineHeight: '27px',
+            letterSpacing: '-0.36px',
+            fontWeight: 500
+          }}
+        >
+          TikTok Shop Key Trends
+        </h3>
+        <p 
+          className="text-secondary-dark"
+          style={{
+            fontSize: '14px',
+            lineHeight: '20px',
+            letterSpacing: '-0.16px',
+            fontWeight: 500
+          }}
+        >
+          US Makeup Market Core Insights
+        </p>
+      </div>
 
-        <div className="space-y-4" style={{ height: '376px' }}>
-          {trends.map((trend) => (
-            <div
-              key={trend.rank}
-              className="flex items-start gap-4 p-4 pt-0 bg-secondary-main border border-secondary-dark/10 rounded-[10px]"
+      <div className="flex flex-col gap-4">
+        {trends.map((trend) => (
+          <div
+            key={trend.rank}
+            className="flex items-start bg-secondary-main border border-secondary-dark/10 rounded-[10px] w-full"
+            style={{
+              padding: '16px',
+              gap: '16px',
+              minHeight: '82px'
+            }}
+          >
+            <div 
+              className="bg-primary-light rounded-[10px] flex items-center justify-center text-white font-medium flex-shrink-0"
+              style={{
+                width: '40px',
+                height: '40px',
+                fontSize: '14px',
+                lineHeight: '20px',
+                letterSpacing: '-0.16px',
+                fontWeight: 500
+              }}
             >
-              <div className="w-10 h-10 bg-primary-light rounded-[10px] flex items-center justify-center text-white text-sm font-medium flex-shrink-0">
-                {trend.rank}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between mb-1">
-                  <h4 className="text-base font-medium text-black leading-6 tracking-[-0.02em]">{trend.title}</h4>
-                  <span className="text-lg font-medium text-primary-light leading-[1.56] tracking-[-0.009em]">{trend.growth}</span>
-                </div>
-                <p className="text-xs text-secondary-dark leading-[1.33] tracking-[-0.013em]">{trend.description}</p>
-              </div>
+              {trend.rank}
             </div>
-          ))}
-        </div>
+            <div className="flex-1 flex flex-col gap-1">
+              <div className="flex items-center justify-between">
+                <h4 
+                  className="text-black font-medium"
+                  style={{
+                    fontSize: '16px',
+                    lineHeight: '24px',
+                    letterSpacing: '-0.32px',
+                    fontWeight: 500
+                  }}
+                >
+                  {trend.title}
+                </h4>
+                <span 
+                  className="text-primary-light font-medium"
+                  style={{
+                    fontSize: '18px',
+                    lineHeight: '28px',
+                    letterSpacing: '-0.16px',
+                    fontWeight: 500
+                  }}
+                >
+                  {trend.growth}
+                </span>
+              </div>
+              <p 
+                className="text-secondary-dark"
+                style={{
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                  letterSpacing: '-0.16px',
+                  fontWeight: 500
+                }}
+              >
+                {trend.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

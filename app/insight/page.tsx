@@ -13,7 +13,7 @@ import VOCSection from "@/components/dashboard/VOCSection";
 
 export default function InsightPage() {
   return (
-    <div className="min-h-screen bg-background-paper">
+    <div className="min-h-screen" style={{ background: "#F5F5F5" }}>
       <Sidebar />
       <Header />
       <main className="ml-[280px] mt-16">
@@ -36,7 +36,7 @@ export default function InsightPage() {
           </div>
 
           {/* Opportunity Matrix and TikTok Trends */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.42fr_1fr] gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[638px_449px] gap-6">
             <OpportunityMatrixCard />
             <TikTokTrendsCard />
           </div>

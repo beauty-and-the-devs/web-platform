@@ -1,99 +1,189 @@
 "use client";
 
 export default function InfluencersCard() {
-  const influencers = [
-    {
-      username: "@mikayla",
-      followers: "14.8M",
-      category: "Honest Reviews",
-      avgViews: "2.4M",
-      engagement: "94%",
-      engagementWidth: "94%",
-    },
-    {
-      username: "@glamzilla",
-      followers: "8.2M",
-      category: "Tutorials",
-      avgViews: "1.8M",
-      engagement: "89%",
-      engagementWidth: "89%",
-    },
-    {
-      username: "@skinbae",
-      followers: "4.1M",
-      category: "Clean Beauty",
-      avgViews: "980K",
-      engagement: "92%",
-      engagementWidth: "92%",
-    },
-    {
-      username: "@makeupbymario",
-      followers: "1.2M",
-      category: "Professional MUA",
-      avgViews: "420K",
-      engagement: "87%",
-      engagementWidth: "87%",
-    },
-  ];
+  const influencer = {
+    username: "@mikayla",
+    followers: "14.8M",
+    category: "Honest Reviews",
+    avgViews: "2.4M",
+    engagement: "94%",
+    engagementWidth: "94%",
+  };
 
   return (
-    <div className="bg-white rounded-[10px] border border-secondary-dark/20 w-full">
-      <div className="p-8 pb-1">
-        <h3 className="text-lg font-medium text-primary-main mb-6 leading-[1.5] tracking-[-0.02em]">
+    <div 
+      className="bg-white rounded-[10px] border border-secondary-dark/20 flex flex-col w-full"
+      style={{
+        padding: '33px 33px 1px',
+        gap: '24px',
+        minHeight: '659px'
+      }}
+    >
+      <div>
+        <h3 
+          className="text-primary-main font-medium"
+          style={{
+            fontSize: '18px',
+            lineHeight: '27px',
+            letterSpacing: '-0.36px',
+            fontWeight: 500,
+            width: '135px',
+            height: '27px'
+          }}
+        >
           Influencer Insights
         </h3>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {influencers.map((influencer, index) => (
-          <div
-            key={index}
-            className="bg-secondary-main border border-secondary-dark/20 rounded-md p-5 hover:shadow-md transition-shadow"
+      <div className="w-full">
+        {/* Main Influencer Card */}
+        <div 
+          className="bg-secondary-main border border-secondary-dark/20 rounded-[10px] p-5 flex flex-col items-center"
+          style={{
+            width: '249.25px',
+            minHeight: '440px'
+          }}
+        >
+          {/* Profile Image */}
+          <div 
+            className="rounded-full mb-4"
+            style={{
+              width: '80px',
+              height: '80px',
+              background: 'rgba(255, 255, 255, 1)'
+            }}
+          />
+
+          {/* Username */}
+          <h4 
+            className="text-black font-medium text-center mb-2"
+            style={{
+              fontSize: '16px',
+              lineHeight: '24px',
+              letterSpacing: '-0.32px',
+              fontWeight: 500
+            }}
           >
-            {/* Header */}
-            <div className="mb-4">
-              <h4 className="text-base font-medium text-black text-center mb-2">
-                {influencer.username}
-              </h4>
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="text-secondary-dark">👥</span>
-                <span className="text-sm text-secondary-dark">{influencer.followers}</span>
-              </div>
-              <div className="flex justify-center">
-                <span className="px-2 py-1 bg-primary-light/10 border border-primary-light/20 rounded-md text-xs text-primary-light">
-                  {influencer.category}
+            {influencer.username}
+          </h4>
+
+          {/* Followers */}
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ color: '#7D7D7D' }}>
+              <path d="M1.17 4.08L5.83 4.08M9.17 4.08L11.67 4.08M9.17 4.08L5.83 4.08M5.83 4.08L1.17 4.08" stroke="currentColor" strokeWidth="1.17" strokeLinecap="round"/>
+              <path d="M9.17 4.08L11.67 4.08M11.67 4.08L11.67 7.58M11.67 7.58L9.17 7.58" stroke="currentColor" strokeWidth="1.17" strokeLinecap="round"/>
+            </svg>
+            <span 
+              className="text-secondary-dark text-center"
+              style={{
+                fontSize: '14px',
+                lineHeight: '20px',
+                letterSpacing: '-0.16px',
+                fontWeight: 500
+              }}
+            >
+              {influencer.followers}
+            </span>
+          </div>
+
+          {/* Category Badge */}
+          <div 
+            className="flex items-center justify-center mb-6"
+            style={{
+              padding: '2px 8px',
+              background: 'rgba(31, 87, 149, 0.1)',
+              borderRadius: '10px'
+            }}
+          >
+            <span 
+              className="text-primary-light text-center"
+              style={{
+                fontSize: '12px',
+                lineHeight: '16px',
+                letterSpacing: '-0.16px',
+                fontWeight: 500
+              }}
+            >
+              {influencer.category}
+            </span>
+          </div>
+
+          {/* Metrics */}
+          <div className="w-full space-y-3">
+            {/* Avg Views */}
+            <div 
+              className="bg-white rounded-[10px] flex items-center justify-between px-2"
+              style={{
+                height: '36px'
+              }}
+            >
+              <span 
+                className="text-secondary-dark"
+                style={{
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                  letterSpacing: '-0.16px',
+                  fontWeight: 500
+                }}
+              >
+                Avg. Views
+              </span>
+              <span 
+                className="text-black font-medium"
+                style={{
+                  fontSize: '14px',
+                  lineHeight: '20px',
+                  letterSpacing: '-0.16px',
+                  fontWeight: 500
+                }}
+              >
+                {influencer.avgViews}
+              </span>
+            </div>
+
+            {/* Engagement */}
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center justify-between">
+                <span 
+                  className="text-secondary-dark"
+                  style={{
+                    fontSize: '12px',
+                    lineHeight: '16px',
+                    letterSpacing: '-0.16px',
+                    fontWeight: 500
+                  }}
+                >
+                  Engagement
+                </span>
+                <span 
+                  className="text-primary-light font-medium"
+                  style={{
+                    fontSize: '12px',
+                    lineHeight: '16px',
+                    letterSpacing: '-0.16px',
+                    fontWeight: 500
+                  }}
+                >
+                  {influencer.engagement}
                 </span>
               </div>
-            </div>
-
-            {/* Metrics */}
-            <div className="space-y-3">
-              <div className="bg-white rounded-md p-2">
-                <p className="text-xs text-secondary-dark mb-1">Avg. Views</p>
-                <p className="text-base font-medium text-black">{influencer.avgViews}</p>
-              </div>
-              <div>
-                <div className="flex items-center justify-between mb-1">
-                  <p className="text-xs text-secondary-dark">Engagement</p>
-                  <p className="text-xs font-medium text-primary-light">{influencer.engagement}</p>
-                </div>
-                <div className="h-1.5 bg-white rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-primary-light rounded-full"
-                    style={{ width: influencer.engagementWidth }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Profile Image Placeholder */}
-            <div className="mt-4 flex justify-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary-light to-primary-main rounded-md flex items-center justify-center text-white text-2xl font-bold">
-                {influencer.username[1].toUpperCase()}
+              <div 
+                className="bg-white rounded-[10px] overflow-hidden"
+                style={{
+                  width: '100%',
+                  height: '6px'
+                }}
+              >
+                <div
+                  className="bg-primary-light rounded-[10px] h-full"
+                  style={{ 
+                    width: influencer.engagementWidth
+                  }}
+                />
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
       </div>
     </div>
   );
