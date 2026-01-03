@@ -10,6 +10,13 @@ interface PackagingVariantsProps {
   onSelect?: (variantId: string) => void;
 }
 
+const colorMap: Record<string, string> = {
+  "Pearl White": "#F8F9FA",
+  "Rose Gold": "#E8D4CD",
+  "Lavender Mist": "#E9D5FF",
+  "Mint Cream": "#D1F4E8",
+};
+
 export default function PackagingVariants({
   variants,
   selectedVariantId,
@@ -23,56 +30,71 @@ export default function PackagingVariants({
   };
 
   return (
-    <div className="bg-white rounded-[10px] border border-secondary-dark/20 p-8">
-      <h3 className="text-lg font-semibold text-primary-main mb-6">
-        패키징 변형
-      </h3>
-      <div className="grid grid-cols-2 gap-4">
+    <div className="bg-white rounded-[10px] border border-secondary-dark/20 p-[25px]">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-medium text-primary-main">
+          Packaging Variants
+        </h3>
+        <button className="w-7 h-7 rounded-[10px] flex items-center justify-center hover:bg-secondary-main transition-colors">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            className="text-secondary-dark"
+          >
+            <path
+              d="M8 2V14M2 8H14"
+              stroke="currentColor"
+              strokeWidth="1.33"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <div className="flex gap-2">
         {variants.map((variant) => {
           const isSelected = selected === variant.id;
+          const color = colorMap[variant.name] || variant.color;
           return (
-            <button
-              key={variant.id}
-              onClick={() => handleSelect(variant.id)}
-              className={cn(
-                "relative p-6 rounded-[10px] border-2 transition-all",
-                isSelected
-                  ? "border-primary-light bg-primary-light/5"
-                  : "border-secondary-dark/20 hover:border-primary-light/50"
-              )}
-            >
-              <div
-                className="w-full h-24 rounded-md mb-3"
-                style={{ backgroundColor: variant.color }}
-              />
-              <p className="text-sm font-medium text-primary-main text-center">
+            <div key={variant.id} className="flex flex-col gap-2">
+              <button
+                onClick={() => handleSelect(variant.id)}
+                className={cn(
+                  "relative w-[110px] h-[110px] rounded-[10px] border-2 transition-all",
+                  isSelected
+                    ? "border-primary-light bg-[#F8F9FA]"
+                    : "border-secondary-dark/20 bg-white"
+                )}
+                style={!isSelected ? { backgroundColor: color } : undefined}
+              >
+                {isSelected && (
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary-light rounded-[10px] flex items-center justify-center">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      className="text-white"
+                    >
+                      <path
+                        d="M11.375 3.5L5.25 9.625L2.625 7"
+                        stroke="currentColor"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </button>
+              <p className="text-xs font-medium text-secondary-dark text-center leading-4 tracking-[-0.16px]">
                 {variant.name}
               </p>
-              {isSelected && (
-                <div className="absolute top-2 right-2 w-6 h-6 bg-primary-light rounded-full flex items-center justify-center">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    className="text-white"
-                  >
-                    <path
-                      d="M11.375 3.5L5.25 9.625L2.625 7"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              )}
-            </button>
+            </div>
           );
         })}
       </div>
     </div>
   );
 }
-
-

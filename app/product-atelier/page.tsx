@@ -16,47 +16,46 @@ import { ProductData } from "@/types/product";
 const initialProductData: ProductData = {
   id: "1",
   name: "Hydro-Glow Serum",
-  description:
-    "수분과 영양을 동시에 공급하는 하이드로 글로우 세럼으로, 피부에 즉각적인 촉촉함과 자연스러운 광채를 선사합니다.",
+  description: "The ultimate hydration booster for radiant, glass-skin glow",
   packagingVariants: [
     {
       id: "1",
       name: "Pearl White",
-      color: "#F5F5F5",
+      color: "#F8F9FA",
     },
     {
       id: "2",
       name: "Rose Gold",
-      color: "#E8B4A0",
+      color: "#E8D4CD",
     },
     {
       id: "3",
       name: "Lavender Mist",
-      color: "#D4C4E8",
+      color: "#E9D5FF",
     },
     {
       id: "4",
       name: "Mint Cream",
-      color: "#C4E8D4",
+      color: "#D1F4E8",
     },
   ],
   textureProfiles: [
     {
       id: "1",
       name: "Watery",
-      description: "가벼운 수성 텍스처로 빠르게 흡수됩니다",
+      description: "Light absorption",
       icon: "💧",
     },
     {
       id: "2",
       name: "Gel-Type",
-      description: "젤 형태로 끈적임 없이 촉촉함을 유지합니다",
+      description: "Fresh & cooling",
       icon: "🧪",
     },
     {
       id: "3",
       name: "Serum",
-      description: "고농축 세럼으로 집중 케어를 제공합니다",
+      description: "Concentrated essence",
       icon: "✨",
     },
   ],
@@ -64,53 +63,67 @@ const initialProductData: ProductData = {
     {
       id: "1",
       name: "Niacinamide",
-      description: "피부 톤 개선과 모공 관리에 효과적",
-      benefit: "피부 톤 균일화",
+      description: "Active",
+      benefit: "Active",
       percentage: "5%",
     },
     {
       id: "2",
       name: "Cica Extract",
-      description: "진정 및 보습 효과",
-      benefit: "진정 및 보습",
-      percentage: "3%",
+      description: "Soothing",
+      benefit: "Soothing",
     },
     {
       id: "3",
       name: "Hyaluronic Acid",
-      description: "강력한 수분 공급",
-      benefit: "수분 공급",
-      percentage: "2%",
+      description: "Hydration",
+      benefit: "Hydration",
     },
     {
       id: "4",
       name: "Peptide Complex",
-      description: "탄력 개선 및 주름 완화",
-      benefit: "탄력 개선",
-      percentage: "1%",
+      description: "Anti-Aging",
+      benefit: "Anti-Aging",
     },
   ],
   painPointSolutions: [
     {
       id: "1",
-      painPoint: "건조하고 칙칙한 피부",
-      solution: "하이알루론산과 나이아신아마이드로 즉각적인 수분 공급 및 톤 개선",
-      category: "피부 톤",
+      painPoint: "Sticky after application",
+      solution: "Fast-absorbing lightweight gel formula",
+      category: "Texture",
+      severity: "High",
     },
     {
       id: "2",
-      painPoint: "모공과 여드름",
-      solution: "나이아신아마이드로 모공 관리 및 피부 진정",
-      category: "모공 관리",
+      painPoint: "Takes too long to see results",
+      solution: "Visible radiance within 7 days",
+      category: "Efficacy",
+      severity: "High",
     },
     {
       id: "3",
-      painPoint: "탄력 저하와 주름",
-      solution: "펩타이드 복합체로 탄력 개선 및 주름 완화",
-      category: "안티에이징",
+      painPoint: "Irritating on sensitive skin",
+      solution: "Dermatologist-tested, hypoallergenic",
+      category: "Sensitivity",
+      severity: "Medium",
     },
   ],
-  claims: ["Clinically Tested", "Vegan", "Cruelty-Free"],
+  claims: [
+    "Clinically Tested",
+    "Vegan",
+    "Cruelty-Free",
+    "Fragrance-Free",
+    "Non-Comedogenic",
+    "Dermatologist Approved",
+    "Refillable Packaging",
+    "Carbon Neutral",
+  ],
+  targetMarket: "Gen-Z & Millennials",
+  pricePoint: "$42 - $48",
+  skinType: "All Types",
+  launchTimeline: "Q3 2026",
+  productTags: ["30ml", "Premium Glass", "Refillable"],
 };
 
 export default function ProductAtelierPage() {
@@ -119,7 +132,7 @@ export default function ProductAtelierPage() {
     productData.packagingVariants[0]?.id
   );
   const [selectedTexture, setSelectedTexture] = useState(
-    productData.textureProfiles[0]?.id
+    productData.textureProfiles[1]?.id // Gel-Type is default
   );
 
   const handleNameChange = (name: string) => {
@@ -151,23 +164,97 @@ export default function ProductAtelierPage() {
       <Sidebar />
       <Header />
       <main className="ml-[280px] mt-16">
-        <div className="max-w-[1400px] mx-auto py-8 px-6">
-          {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-primary-main mb-2">
-              Product Atelier
-            </h1>
-            <p className="text-secondary-dark">
-              AI 기반 제품 개발 도구로 제품 컨셉을 생성하고 관리하세요
-            </p>
+        <div className="w-[1111px] mx-auto py-5 px-10">
+          {/* Page Header */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-2">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  className="text-primary-light"
+                >
+                  <path
+                    d="M10 2L10 18M2 10L18 10"
+                    stroke="currentColor"
+                    strokeWidth="1.67"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M10 2L6 6L10 10L14 6L10 2"
+                    stroke="currentColor"
+                    strokeWidth="1.67"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M10 10L6 14L10 18L14 14L10 10"
+                    stroke="currentColor"
+                    strokeWidth="1.67"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <p className="text-xs font-semibold text-primary-light uppercase tracking-[0.6px]">
+                  AI-Generated Product Concept
+                </p>
+              </div>
+              <h1 className="text-2xl font-medium text-primary-main leading-9 tracking-[-0.48px]">
+                New Product Development
+              </h1>
+            </div>
+            <div className="flex items-center gap-3">
+              <button className="px-4 py-2 bg-white border border-secondary-dark/20 rounded-[10px] flex items-center gap-2 hover:bg-secondary-main transition-colors">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  className="text-black"
+                >
+                  <path
+                    d="M8 2V14M2 8H14"
+                    stroke="currentColor"
+                    strokeWidth="1.33"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <span className="text-sm font-medium text-black leading-5 tracking-[-0.16px]">
+                  Edit Concept
+                </span>
+              </button>
+              <button className="px-6 py-2 bg-primary-light text-white rounded-[10px] flex items-center gap-2 hover:bg-primary-light/90 transition-colors">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  className="text-white"
+                >
+                  <path
+                    d="M12 8L8 4M12 8L8 12M12 8L4 8"
+                    stroke="currentColor"
+                    strokeWidth="1.33"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="text-sm font-medium text-white leading-5 tracking-[-0.16px]">
+                  Generate Marketing Video
+                </span>
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-12 gap-6">
+          <div className="flex gap-6">
             {/* Left Column - Product Image & Variants */}
-            <div className="col-span-5 space-y-6">
+            <div className="w-[539.5px] flex flex-col gap-6">
               <ProductImageDisplay
                 imageUrl={productData.imageUrl}
                 productName={productData.name}
+                productTags={productData.productTags}
               />
               <PackagingVariants
                 variants={productData.packagingVariants}
@@ -182,10 +269,14 @@ export default function ProductAtelierPage() {
             </div>
 
             {/* Right Column - Product Info & Details */}
-            <div className="col-span-7 space-y-6">
+            <div className="w-[539.5px] flex flex-col gap-6">
               <ProductInformationCard
                 name={productData.name}
                 description={productData.description}
+                targetMarket={productData.targetMarket}
+                pricePoint={productData.pricePoint}
+                skinType={productData.skinType}
+                launchTimeline={productData.launchTimeline}
                 onNameChange={handleNameChange}
                 onDescriptionChange={handleDescriptionChange}
                 editable={true}
@@ -199,20 +290,8 @@ export default function ProductAtelierPage() {
               />
             </div>
           </div>
-
-          {/* Action Buttons */}
-          <div className="mt-8 flex justify-end gap-4">
-            <button className="px-6 py-3 border border-secondary-dark/20 rounded-[10px] text-primary-main hover:bg-secondary-main transition-colors">
-              저장
-            </button>
-            <button className="px-6 py-3 bg-primary-light text-white rounded-[10px] hover:bg-primary-light/90 transition-colors">
-              AI로 제품 생성
-            </button>
-          </div>
         </div>
       </main>
     </div>
   );
 }
-
-

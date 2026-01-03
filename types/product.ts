@@ -25,6 +25,7 @@ export interface PainPointSolution {
   painPoint: string;
   solution: string;
   category: string;
+  severity?: "High" | "Medium" | "Low";
 }
 
 export interface ProductData {
@@ -37,6 +38,12 @@ export interface ProductData {
   painPointSolutions: PainPointSolution[];
   claims: string[];
   imageUrl?: string;
+  targetMarket?: string;
+  pricePoint?: string;
+  skinType?: string;
+  launchTimeline?: string;
+  productTags?: string[];
+  severity?: "High" | "Medium" | "Low";
 }
 
 
