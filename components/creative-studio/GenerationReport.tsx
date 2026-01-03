@@ -7,38 +7,27 @@ interface GenerationReportProps {
 }
 
 export default function GenerationReport({ report }: GenerationReportProps) {
-  const getFidelityColor = (score: number) => {
-    if (score >= 80) return "text-accent-success";
-    if (score >= 60) return "text-accent-warning";
-    return "text-accent-error";
-  };
-
-  const getFidelityBgColor = (score: number) => {
-    if (score >= 80) return "bg-accent-success";
-    if (score >= 60) return "bg-accent-warning";
-    return "bg-accent-error";
-  };
-
   return (
-    <div className="bg-white rounded-[10px] border border-secondary-dark/20 p-6">
-      <h2 className="text-xl font-semibold text-primary-main mb-4">
+    <div className="bg-white rounded-[10px] border border-secondary-dark/20 p-[25px]">
+      <h3 className="text-lg font-medium text-primary-main mb-4">
         Generation Report
-      </h2>
+      </h3>
 
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Fidelity Score */}
-        <div>
+        <div className="bg-[#F0FDF4] border border-[#D1FAE5] rounded-[10px] p-[17px]">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-secondary-dark">
-              Fidelity Score
-            </span>
-            <span className={`text-lg font-bold ${getFidelityColor(report.fidelityScore)}`}>
-              {report.fidelityScore}%
-            </span>
+            <span className="text-sm text-secondary-dark">Fidelity Score</span>
+            <div className="bg-[#16A34A] px-2 py-1 rounded flex items-center gap-1.5">
+              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+              <span className="text-xs font-semibold text-white">{report.fidelityScore}%</span>
+            </div>
           </div>
-          <div className="w-full h-2 bg-secondary-main rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-white rounded-full overflow-hidden">
             <div
-              className={`h-full ${getFidelityBgColor(report.fidelityScore)} transition-all`}
+              className="h-full bg-[#16A34A] rounded-full transition-all"
               style={{ width: `${report.fidelityScore}%` }}
             />
           </div>
@@ -46,54 +35,43 @@ export default function GenerationReport({ report }: GenerationReportProps) {
 
         {/* Target Audience */}
         <div>
-          <span className="text-sm font-medium text-secondary-dark block mb-2">
+          <span className="text-sm text-secondary-dark block mb-2">
             Target Audience
           </span>
-          <div className="px-3 py-2 bg-secondary-main rounded text-sm text-primary-main">
-            {report.targetAudience}
+          <div className="flex flex-wrap gap-2">
+            {report.targetAudience.map((audience, index) => (
+              <span
+                key={index}
+                className="px-3 py-1.5 bg-primary-light/10 border border-primary-light/20 rounded-[10px] text-xs font-medium text-primary-light"
+              >
+                {audience}
+              </span>
+            ))}
           </div>
         </div>
 
-        {/* Estimated Engagement */}
-        <div>
-          <span className="text-sm font-medium text-secondary-dark block mb-3">
-            Est. Engagement
-          </span>
-          <div className="grid grid-cols-3 gap-3">
-            <div className="bg-secondary-main rounded p-3">
-              <div className="text-xs text-secondary-dark mb-1">Views</div>
-              <div className="text-lg font-semibold text-primary-main">
-                {report.estimatedEngagement.views}
-              </div>
-            </div>
-            <div className="bg-secondary-main rounded p-3">
-              <div className="text-xs text-secondary-dark mb-1">Likes</div>
-              <div className="text-lg font-semibold text-primary-main">
-                {report.estimatedEngagement.likes}
-              </div>
-            </div>
-            <div className="bg-secondary-main rounded p-3">
-              <div className="text-xs text-secondary-dark mb-1">Shares</div>
-              <div className="text-lg font-semibold text-primary-main">
-                {report.estimatedEngagement.shares}
-              </div>
-            </div>
+        {/* Est. Engagement & Views */}
+        <div className="pt-4 border-t border-secondary-dark/20 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-secondary-dark">Est. Engagement</span>
+            <span className="text-sm font-semibold text-primary-dark">
+              {report.estimatedEngagement}%
+            </span>
           </div>
-        </div>
-
-        {/* Generation Info */}
-        <div className="pt-4 border-t border-secondary-dark/20">
-          <div className="flex items-center justify-between text-xs text-secondary-dark">
-            <span>Generation Time</span>
-            <span className="font-medium">{report.generationTime}</span>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-secondary-dark">Est. Views (24h)</span>
+            <span className="text-sm font-semibold text-primary-dark">
+              {report.estimatedViews24h}
+            </span>
           </div>
-          <div className="flex items-center justify-between text-xs text-secondary-dark mt-2">
-            <span>Model</span>
-            <span className="font-medium">{report.model}</span>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-secondary-dark">Optimal Post Time</span>
+            <span className="text-sm font-semibold text-primary-dark">
+              {report.optimalPostTime}
+            </span>
           </div>
         </div>
       </div>
     </div>
   );
 }
-

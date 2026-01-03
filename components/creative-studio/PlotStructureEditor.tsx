@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { PlotSection } from "@/types/video";
 
 interface PlotStructureEditorProps {
@@ -8,139 +7,81 @@ interface PlotStructureEditorProps {
   onSectionsChange: (sections: PlotSection[]) => void;
 }
 
-const sectionTypes = [
-  { type: "HOOK", label: "HOOK", color: "bg-accent-success" },
-  { type: "PROBLEM", label: "PROBLEM", color: "bg-accent-warning" },
-  { type: "DEMO", label: "DEMO", color: "bg-primary-light" },
-  { type: "CTA", label: "CTA", color: "bg-accent-error" },
-];
+const sectionConfig = {
+  HOOK: { icon: "⚡️", label: "HOOK" },
+  PROBLEM: { icon: "⚠️", label: "PROBLEM" },
+  DEMO: { icon: "💧", label: "DEMO" },
+  CTA: { icon: "🛒", label: "CTA" },
+};
 
 export default function PlotStructureEditor({
   sections,
   onSectionsChange,
 }: PlotStructureEditorProps) {
-  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
-
-  const handleDragStart = (index: number) => {
-    setDraggedIndex(index);
-  };
-
-  const handleDragOver = (e: React.DragEvent, index: number) => {
-    e.preventDefault();
-    if (draggedIndex === null) return;
-
-    const newSections = [...sections];
-    const draggedSection = newSections[draggedIndex];
-    newSections.splice(draggedIndex, 1);
-    newSections.splice(index, 0, draggedSection);
-    
-    // 순서 업데이트
-    const updatedSections = newSections.map((section, idx) => ({
-      ...section,
-      order: idx,
-    }));
-
-    onSectionsChange(updatedSections);
-    setDraggedIndex(index);
-  };
-
-  const handleDragEnd = () => {
-    setDraggedIndex(null);
-  };
-
-  const handleSectionEdit = (id: string, field: keyof PlotSection, value: string) => {
+  const handleContentChange = (id: string, content: string) => {
     const updatedSections = sections.map((section) =>
-      section.id === id ? { ...section, [field]: value } : section
+      section.id === id ? { ...section, content } : section
     );
     onSectionsChange(updatedSections);
   };
 
-  const getSectionTypeConfig = (type: PlotSection["type"]) => {
-    return sectionTypes.find((st) => st.type === type) || sectionTypes[0];
-  };
-
   return (
     <div className="bg-white rounded-[10px] border border-secondary-dark/20 p-6">
-      <h2 className="text-xl font-semibold text-primary-main mb-4">
-        Plot Structure
-      </h2>
-      <p className="text-sm text-secondary-dark mb-6">
-        비디오 구조를 편집하고 순서를 조정하세요
-      </p>
+      <div className="mb-4">
+        <h2 className="text-xl font-medium text-primary-main mb-1">
+          Plot Structure
+        </h2>
+        <p className="text-xs text-secondary-dark">(Agent Output)</p>
+      </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4 relative">
         {sections.map((section, index) => {
-          const typeConfig = getSectionTypeConfig(section.type);
+          const config = sectionConfig[section.type];
+          const isLast = index === sections.length - 1;
+          const contentType = section.contentType || 
+            (section.content.toLowerCase().includes("visual") || 
+             section.content.toLowerCase().includes("close-up") ||
+             section.content.toLowerCase().includes("test") ||
+             section.content.toLowerCase().includes("absorption")
+              ? "Visual" : "Text");
+
           return (
-            <div
-              key={section.id}
-              draggable
-              onDragStart={() => handleDragStart(index)}
-              onDragOver={(e) => handleDragOver(e, index)}
-              onDragEnd={handleDragEnd}
-              className={`flex items-center gap-4 p-4 rounded-md border-2 border-transparent hover:border-primary-light/30 cursor-move transition-all ${
-                draggedIndex === index ? "opacity-50" : ""
-              }`}
-            >
-              {/* Drag Handle */}
-              <div className="flex flex-col gap-1 cursor-grab active:cursor-grabbing">
-                <div className="w-1 h-1 rounded-full bg-secondary-dark/40"></div>
-                <div className="w-1 h-1 rounded-full bg-secondary-dark/40"></div>
-                <div className="w-1 h-1 rounded-full bg-secondary-dark/40"></div>
+            <div key={section.id} className="relative">
+              <div className="bg-white border border-secondary-dark/20 rounded-[10px] p-[17px] pb-1">
+                <div className="flex gap-3">
+                  {/* Icon */}
+                  <div className="w-12 h-12 bg-secondary-main rounded-[10px] flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">{config.icon}</span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm font-semibold text-primary-dark">
+                        {config.label}
+                      </span>
+                      <span className="px-2 py-0.5 bg-secondary-main rounded text-xs text-secondary-dark">
+                        {section.duration}
+                      </span>
+                    </div>
+                    <div className="text-xs text-secondary-dark mb-1">
+                      {contentType === "Visual" ? "Visual:" : "Text:"}
+                    </div>
+                    <div className="text-xs text-primary-dark leading-4">
+                      {section.content || `Enter ${contentType.toLowerCase()} description...`}
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Section Type Badge */}
-              <div
-                className={`${typeConfig.color} text-white px-3 py-1 rounded text-xs font-semibold min-w-[80px] text-center`}
-              >
-                {typeConfig.label}
-              </div>
-
-              {/* Duration */}
-              <div className="text-sm text-secondary-dark min-w-[60px]">
-                {section.duration}
-              </div>
-
-              {/* Title Input */}
-              <input
-                type="text"
-                value={section.title}
-                onChange={(e) => handleSectionEdit(section.id, "title", e.target.value)}
-                className="flex-1 px-3 py-2 border border-secondary-dark/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary-light"
-                placeholder="섹션 제목"
-              />
-
-              {/* Content Input */}
-              <input
-                type="text"
-                value={section.content}
-                onChange={(e) => handleSectionEdit(section.id, "content", e.target.value)}
-                className="flex-1 px-3 py-2 border border-secondary-dark/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary-light"
-                placeholder="섹션 내용"
-              />
+              {/* Connector Line */}
+              {!isLast && (
+                <div className="absolute left-6 top-[64px] w-0.5 h-16 bg-secondary-dark/30" />
+              )}
             </div>
           );
         })}
       </div>
-
-      {/* Add Section Button */}
-      <button
-        onClick={() => {
-          const newSection: PlotSection = {
-            id: `section-${Date.now()}`,
-            type: "HOOK",
-            title: "",
-            duration: "0-3s",
-            content: "",
-            order: sections.length,
-          };
-          onSectionsChange([...sections, newSection]);
-        }}
-        className="mt-4 w-full py-2 border-2 border-dashed border-secondary-dark/30 rounded text-sm text-secondary-dark hover:border-primary-light hover:text-primary-light transition-colors"
-      >
-        + 섹션 추가
-      </button>
     </div>
   );
 }
-

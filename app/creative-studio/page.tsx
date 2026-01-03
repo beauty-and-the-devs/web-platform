@@ -9,45 +9,48 @@ import GeneratedVariations from "@/components/creative-studio/GeneratedVariation
 import GenerationReport from "@/components/creative-studio/GenerationReport";
 import FeedbackInput from "@/components/creative-studio/FeedbackInput";
 import {
-  VideoGenerationData,
   PlotSection,
   VideoVariation,
   GenerationReport as GenerationReportType,
 } from "@/types/video";
 
-// 샘플 데이터
+// 샘플 데이터 - Figma 디자인에 맞춤
 const initialPlotStructure: PlotSection[] = [
   {
     id: "1",
     type: "HOOK",
-    title: "이 세럼 하나면 끝!",
+    title: "HOOK",
     duration: "0-3s",
-    content: "강렬한 첫 인상으로 시선 집중",
+    content: "Extreme close-up of water drop texture",
     order: 0,
+    contentType: "Visual",
   },
   {
     id: "2",
     type: "PROBLEM",
-    title: "건조하고 칙칙한 피부 고민",
+    title: "PROBLEM",
     duration: "3-6s",
-    content: "피부 고민을 공감대 형성",
+    content: "'Dry skin ruining your makeup?'",
     order: 1,
+    contentType: "Text",
   },
   {
     id: "3",
     type: "DEMO",
-    title: "제품 사용 데모",
-    duration: "6-12s",
-    content: "실제 사용 모습과 효과 시연",
+    title: "DEMO",
+    duration: "6-13s",
+    content: "Instant absorption test",
     order: 2,
+    contentType: "Visual",
   },
   {
     id: "4",
     type: "CTA",
-    title: "지금 바로 구매하세요!",
-    duration: "12-15s",
-    content: "구매 유도 및 행동 촉구",
+    title: "CTA",
+    duration: "13-15s",
+    content: "Click yellow basket",
     order: 3,
+    contentType: "Text",
   },
 ];
 
@@ -71,13 +74,11 @@ const initialVariations: VideoVariation[] = [
 ];
 
 const initialReport: GenerationReportType = {
-  fidelityScore: 87,
-  targetAudience: "20-30대 여성, 뷰티 관심층",
-  estimatedEngagement: {
-    views: "12.5K",
-    likes: "1.2K",
-    shares: "340",
-  },
+  fidelityScore: 98,
+  targetAudience: ["Gen-Z", "Dry Skin"],
+  estimatedEngagement: 14.2,
+  estimatedViews24h: "124K",
+  optimalPostTime: "8PM EST",
   generationTime: "2분 34초",
   model: "GPT-4 Vision + Stable Diffusion",
 };
@@ -128,33 +129,33 @@ export default function CreativeStudioPage() {
       <Sidebar />
       <Header />
       <main className="ml-[280px] mt-16">
-        <div className="max-w-[1600px] mx-auto py-8 px-6">
+        <div className="w-[1111px] py-8 px-10">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-primary-main mb-2">
+          <div className="mb-6">
+            <div className="flex items-center gap-2 mb-1">
+              <svg className="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span className="text-xs font-semibold text-primary-light uppercase tracking-wider">
+                AI VIDEO STUDIO
+              </span>
+            </div>
+            <h1 className="text-2xl font-medium text-primary-main">
               Creative Studio
             </h1>
-            <p className="text-secondary-dark">
-              AI 기반 비디오 생성 스튜디오로 TikTok 콘텐츠를 만들어보세요
-            </p>
           </div>
 
           <div className="grid grid-cols-12 gap-6">
-            {/* Left Column - Plot Structure & Variations */}
-            <div className="col-span-5 space-y-6">
+            {/* Left Column - Plot Structure */}
+            <div className="col-span-3">
               <PlotStructureEditor
                 sections={plotStructure}
                 onSectionsChange={setPlotStructure}
               />
-              <GeneratedVariations
-                variations={variations}
-                selectedVariationId={selectedVariationId}
-                onSelectVariation={setSelectedVariationId}
-              />
             </div>
 
             {/* Center Column - Video Preview */}
-            <div className="col-span-4">
+            <div className="col-span-5">
               <VideoPreview
                 videoUrl={selectedVariation?.videoUrl}
                 thumbnailUrl={selectedVariation?.thumbnailUrl}
@@ -164,30 +165,27 @@ export default function CreativeStudioPage() {
               />
             </div>
 
-            {/* Right Column - Report & Feedback */}
-            <div className="col-span-3 space-y-6">
-              <GenerationReport report={report} />
-              <FeedbackInput
-                onSubmit={handleFeedbackSubmit}
-                onRegenerate={handleRegenerate}
-                isLoading={isGenerating}
+            {/* Right Column - Variations & Report */}
+            <div className="col-span-4 space-y-6">
+              <GeneratedVariations
+                variations={variations}
+                selectedVariationId={selectedVariationId}
+                onSelectVariation={setSelectedVariationId}
               />
+              <GenerationReport report={report} />
             </div>
           </div>
 
-          {/* Generate Button */}
-          <div className="mt-8 flex justify-center">
-            <button
-              onClick={handleGenerate}
-              disabled={isGenerating}
-              className="px-8 py-3 bg-primary-light text-white rounded-[10px] hover:bg-primary-light/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-base font-medium"
-            >
-              {isGenerating ? "비디오 생성 중..." : "비디오 생성하기"}
-            </button>
+          {/* Feedback Input - Full Width */}
+          <div className="mt-6">
+            <FeedbackInput
+              onSubmit={handleFeedbackSubmit}
+              onRegenerate={handleRegenerate}
+              isLoading={isGenerating}
+            />
           </div>
         </div>
       </main>
     </div>
   );
 }
-

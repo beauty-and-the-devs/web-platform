@@ -5,6 +5,7 @@ export interface PlotSection {
   duration: string; // "0-3s", "3-6s" 등
   content: string;
   order: number;
+  contentType?: "Visual" | "Text"; // Visual 또는 Text 구분
 }
 
 export interface VideoVariation {
@@ -18,12 +19,10 @@ export interface VideoVariation {
 
 export interface GenerationReport {
   fidelityScore: number; // 0-100
-  targetAudience: string;
-  estimatedEngagement: {
-    views: string;
-    likes: string;
-    shares: string;
-  };
+  targetAudience: string[];
+  estimatedEngagement: number; // percentage
+  estimatedViews24h: string;
+  optimalPostTime: string;
   generationTime: string;
   model: string;
 }
